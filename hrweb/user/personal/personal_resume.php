@@ -51,19 +51,11 @@ elseif ($act=='make1')
 {
 	$uid=intval($_SESSION['uid']);
 	$pid=intval($_REQUEST['pid']);
-	/**
-	 * 3.6优化start
-	 * @var [type]
-	 */
 	$total=$db->get_total("SELECT COUNT(*) AS num FROM ".table('resume')." WHERE uid='{$uid}'");
 	if ($total>=intval($_CFG['resume_max']))
 	{
 	showmsg("最大{$_CFG['resume_max']} 件履歴書を作成できます,制限を超えました！",1);
 	}
-	/**
-	 * 3.6优化end
-	 * @var [type]
-	 */
 	$_SESSION['send_mobile_key']=mt_rand(100000, 999999);
 	$smarty->assign('send_key',$_SESSION['send_mobile_key']);
 	$smarty->assign('resume_basic',get_resume_basic($uid,$pid));
@@ -216,7 +208,7 @@ elseif($act=='ajax_get_interest_jobs'){
 					<td width="228"><div class="index-line2"><a href="'.$company_url.'" class="underline com-link">'.$v["companyname"].'</a></div></td>
 					<td width="139"><div class="index-line3">'.$v["district_cn"].'</div></td>
 					<td width="195"><span>'.$v["wage_cn"].'</span></td>
-					<td width="75">2015-06-01</td>
+					<td width="75">2017-06-01</td>
 				</tr>';
 		}
 	}
